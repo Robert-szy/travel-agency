@@ -9,15 +9,35 @@ class TripListOptions extends React.Component {
     if(checked) {
       console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
+      this.props.filters.tags.push(tag);
+      this.props.addTagFilter(tag);
     } else {
       console.log('Removing tag', tag);
       // TODO - use action dispatcher from props
+      const indexOfTag = this.props.filters.tags.indexOf(tag);
+      this.props.filters.tags.splice(indexOfTag, 1);
+      this.props.removeTagFilter(tag);
     }
   }
 
   handleDuration(type, value){
     console.log('Changing duration', type, value);
-    // TODO - use action dispatcher from props
+
+    if(type == 'from') {
+      if (this.props.filters.duration.to > this.props.filters.duration.from) {
+        this.props.filters.duration.from = parseInt(value);
+      } else if (value < this.props.filters.duration.from) {
+        this.props.filters.duration.from = parseInt(value);
+      }
+    } else if (type == 'to') {
+      if (this.props.filters.duration.to > this.props.filters.duration.from) {
+        this.props.filters.duration.to = parseInt(value);
+      } else if (value > this.props.filters.duration.to) {
+        this.props.filters.duration.to = parseInt(value);
+      }
+    }
+
+    this.props.changeDurationTime(type, value);
   }
 
   handleSearch(phrase){
@@ -73,6 +93,10 @@ TripListOptions.propTypes = {
   tags: PropTypes.object,
   filters: PropTypes.object,
   changeSearchPhrase: PropTypes.func,
+  changeDurationTime: PropTypes.func,
+  addTagFilter: PropTypes.func,
+  removeTagFilter: PropTypes.func,
+
 };
 
 export default TripListOptions;

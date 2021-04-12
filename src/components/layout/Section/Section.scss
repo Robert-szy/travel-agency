@@ -3,6 +3,11 @@
 .component {
   padding: ($base-size * 4) 0;
   width: 100%;
+  opacity: 1;
+  &:active {
+    opacity: 0;
+    transition: 2s;
+  }
   &.centered {
     padding: 0;
     width: auto;
