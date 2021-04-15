@@ -1,13 +1,33 @@
 import React from 'react';
-import NotFound from '../../views/NotFound/NotFound';
+import styles from './OrderOption.scss';
+import {formatPrice} from '../../../utils/formatPrice';
+import PropTypes from 'prop-types';
 
-const OrderOptionDropdown = ({error}) => {
-  if(error) return <NotFound />;
-  else return (
-    <div>
-      OrderOptionDropdown
-    </div>
-  );
+
+
+//import NotFound from '../../views/NotFound/NotFound';
+
+const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) => (
+  <select
+    className={styles.dropdown}
+    value={currentValue}
+    onChange={event => setOptionValue(event.currentTarget.value)}
+  >
+    {required ? '' : (
+      <option key='null' value=''>---</option>
+    )}
+    {values.map(value => (
+      <option key={value.id} value={value.id}>{value.name} ({formatPrice(value.price)})</option>
+    ))}
+  </select>
+);
+
+OrderOptionDropdown.propTypes = {
+  required: PropTypes.string,
+  values: PropTypes.array,
+  currentValue: PropTypes.number,
+  setOptionValue: PropTypes.func,
+
 };
 
 export default OrderOptionDropdown;
