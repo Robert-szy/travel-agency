@@ -1,13 +1,33 @@
 import React from 'react';
-import NotFound from '../../views/NotFound/NotFound';
+import styles from './OrderOption.scss';
+import {formatPrice} from '../../../utils/formatPrice';
+import PropTypes from 'prop-types';
 
-const OrderOptionNumber = ({error}) => {
-  if(error) return <NotFound />;
-  else return (
-    <div>
-      OrderOptionNumber
-    </div>
-  );
+
+
+//import NotFound from '../../views/NotFound/NotFound';
+
+const OrderOptionNumber = ({limits, value, currentValue, setOptionValue}) => (
+  <div className={styles.number}>
+    <input
+      className={styles.inputSmall}
+      type='number'
+      value={currentValue}
+      min={limits.min}
+      max={limits.max}
+      onChange={event => setOptionValue(event.currentTarget.value)}
+    >
+      {formatPrice(value)}
+    </input>
+  </div>
+);
+
+OrderOptionNumber.propTypes = {
+  limits: PropTypes.object,
+  value: PropTypes.number,
+  currentValue: PropTypes.number,
+  setOptionValue: PropTypes.func,
+
 };
 
 export default OrderOptionNumber;
