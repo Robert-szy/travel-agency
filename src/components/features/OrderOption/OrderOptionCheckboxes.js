@@ -16,6 +16,8 @@ const newValueSet = (currentValue, id, checked) => {
   }
 };
 
+//{if(currentValue.indexOf(id))>=0 {currentTarget.checked})}
+
 const OrderOptionCheckboxes = ({values, currentValue, setOptionValue}) => (
 
   <div
