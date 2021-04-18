@@ -3,11 +3,8 @@ import styles from './OrderOption.scss';
 import {formatPrice} from '../../../utils/formatPrice';
 import PropTypes from 'prop-types';
 
-
-
 //import { Grid, Row } from 'react-flexbox-grid';
 
-//import styles from './OrderSummary.scss';
 
 
 const OrderOptionText = ({value, currentValue, setOptionValue}) => (
@@ -15,6 +12,7 @@ const OrderOptionText = ({value, currentValue, setOptionValue}) => (
     <input
       className={styles.inputSmall}
       type='text'
+      maxLength='200'
       value={currentValue}
       onChange={event => setOptionValue(event.currentTarget.value)}
     >

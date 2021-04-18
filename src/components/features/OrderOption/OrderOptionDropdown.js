@@ -3,10 +3,6 @@ import styles from './OrderOption.scss';
 import {formatPrice} from '../../../utils/formatPrice';
 import PropTypes from 'prop-types';
 
-
-
-//import NotFound from '../../views/NotFound/NotFound';
-
 const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) => (
   <select
     className={styles.dropdown}

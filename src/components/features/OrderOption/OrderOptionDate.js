@@ -1,24 +1,30 @@
-import React from 'react';
-import NotFound from '../../views/NotFound/NotFound';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 
 
-//import { Grid, Row } from 'react-flexbox-grid';
+//{event => setOptionValue(event.currentTarget.value)}
 
-//import styles from './OrderSummary.scss';
+const OrderOptionDate = () => {
+  const [startDate, setStartDate] = useState(new Date());
 
 
-const OrderOptionDate = ({error, name}) => {
-  //value={currentValue};
-  if(error) return <NotFound />;
-  else return (
-    <div
+  return (
+    <DatePicker
+      selected={startDate}
+      //value={currentValue}
+      onChange={date => setStartDate(date)}
     >
-      <div>
-        <h2 className='styles.component'>{name}</h2>
-      </div>
-    </div>
+    </DatePicker>
   );
-
 };
 
+OrderOptionDate.propTypes = {
+
+  values: PropTypes.array,
+  currentValue: PropTypes.number,
+  setOptionValue: PropTypes.func,
+
+};
 export default OrderOptionDate;
