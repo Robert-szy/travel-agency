@@ -1,0 +1,72 @@
+import React from 'react';
+import {shallow} from 'enzyme';
+import TripSummary from './TripSummary';
+
+describe('Component TripSummary', () => {
+  it('should render without crashing', () => {
+    const component = shallow(<TripSummary id='id1212' image='asas.jmg' name='Lorem ipsum' cost='123' days={parseInt(123)} tags={['asd1', 'asd2', 'asd3']}/>);
+    expect(component).toBeTruthy();
+    //console.log(component.debug());
+
+  });
+
+  it('should throw error without required props', () => {
+    expect(() => shallow(<TripSummary />)).toThrow();
+  });
+
+  it('should render correct link', () => {
+    const expectedLink = 'abc';
+    const component = shallow(<TripSummary id={expectedLink} image='asas.jmg' name='Lorem ipsum' cost='123' days={parseInt(123)} tags={['asd1', 'asd2', 'asd3']}/>);
+
+    expect(component.find('Link').prop('to')).toEqual(`/trip/${expectedLink}`);
+
+  });
+
+  it('should render correct src and alt', () => {
+    const expectedSrc = 'src';
+    const expectedAlt = 'alt';
+
+    const component = shallow(<TripSummary image={expectedSrc} name={expectedAlt} tags={['asd1', 'asd2', 'asd3']}/>);
+
+    expect(component.find('img').prop('src')).toEqual(expectedSrc);
+    expect(component.find('img').prop('alt')).toEqual(expectedAlt);
+
+
+  });
+
+  it('should render tags', () => {
+    const tag1 = 'asd1';
+    const tag2 = 'asd1';
+    const tag3 = 'asd1';
+    const tags = [tag1, tag2, tag3];
+    const wrapper = shallow(<TripSummary tags= {tags} />);
+
+    // Check if an element in the Component exists
+    expect(wrapper.contains(<span className="tag">asd1</span >)).toBeTruthy();
+  });
+
+  it('should render correct tags', () => {
+    const tag1 = 'asd1';
+    const tag2 = 'asd2';
+    const tag3 = 'asd3';
+    const tags = [tag1, tag2, tag3];
+
+    const component = shallow(<TripSummary tags= {tags} />);
+
+    expect(component.find('span').at(2).contains(tags[0])).toEqual(true);
+    expect(component.find('span').at(3).contains(tags[1])).toEqual(true);
+    expect(component.find('span').at(4).contains(tags[2])).toEqual(true);
+
+  });
+
+  it('should not render tags if [tags} is false/empty', () => {
+    const tags = [];
+
+    const component = shallow(<TripSummary tags= {tags}/>);
+    console.log(component.debug());
+
+    expect(component.containsMatchingElement(<div className="tags" />)).toEqual(false);
+  });
+
+
+});
