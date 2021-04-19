@@ -59,7 +59,7 @@ describe('Component TripSummary', () => {
 
   });
 
-  it('should not render tags if [tags} is false/empty', () => {
+  it('should not render tags if [tags] is false/empty', () => {
     const tags = [];
 
     const component = shallow(<TripSummary tags= {tags}/>);
