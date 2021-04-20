@@ -16,11 +16,11 @@ describe('Component OrderOption', () => {
   it('should render name in title', () => {
     const name = 'name';
 
-    const component = shallow(<OrderOption name={'name'} type={'string'}/>);
+    const component = shallow(<OrderOption name={'name'} type={'text'}/>);
 
-    console.log(component.debug());
+    //console.log(component.debug());
+    //console.log(component.props());
 
-    expect(component.find({prop: 'name'})).toEqual(name);
     expect(component.find('h3').contains(name)).toEqual(true);
   });
 });

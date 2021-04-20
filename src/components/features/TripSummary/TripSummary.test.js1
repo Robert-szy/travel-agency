@@ -39,6 +39,7 @@ describe('Component TripSummary', () => {
     const tag2 = 'asd1';
     const tag3 = 'asd1';
     const tags = [tag1, tag2, tag3];
+
     const wrapper = shallow(<TripSummary tags= {tags} />);
 
     // Check if an element in the Component exists
