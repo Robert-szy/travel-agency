@@ -4,17 +4,14 @@ import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 
 
-//{event => setOptionValue(event.currentTarget.value)}
-
-const OrderOptionDate = () => {
+const OrderOptionDate = ({setOptionValue}) => {
   const [startDate, setStartDate] = useState(new Date());
 
 
   return (
     <DatePicker
       selected={startDate}
-      //value={currentValue}
-      onChange={date => setStartDate(date)}
+      onChange={date => {setStartDate(date); setOptionValue(date);}}
     >
     </DatePicker>
   );
@@ -23,7 +20,7 @@ const OrderOptionDate = () => {
 OrderOptionDate.propTypes = {
 
   values: PropTypes.array,
-  currentValue: PropTypes.instanceOf(Date),
+  //currentValue: PropTypes.instanceOf(Date),
   setOptionValue: PropTypes.func,
 
 };

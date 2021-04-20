@@ -14,7 +14,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 //import styles from './OrderForm.scss';
 //{formatPrice(calculateTotal(tripCost, options))}
 
-const OrderForm = ({error, tripCost, options, id, setOrderOption}) => {
+const OrderForm = ({error, tripCost, options, setOrderOption}) => {
 
   if(error) return <NotFound />;
   else return (
@@ -22,7 +22,7 @@ const OrderForm = ({error, tripCost, options, id, setOrderOption}) => {
       <Row>
         {pricing.map(pricing => (
           <Col md={4} key={pricing.id}>
-            <OrderOption  {...pricing} optionId={options[id]} setOrderOption={setOrderOption}></OrderOption>
+            <OrderOption  {...pricing} optionId={options[pricing.id]} setOrderOption={setOrderOption}></OrderOption>
           </Col>
         ))}
         <Col xs={12}>

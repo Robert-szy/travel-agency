@@ -18,9 +18,37 @@ describe('Component OrderOption', () => {
 
     const component = shallow(<OrderOption name={'name'} type={'text'}/>);
 
-    //console.log(component.debug());
+    console.log(component.html());
     //console.log(component.props());
 
-    expect(component.find('h3').contains(name)).toEqual(true);
+    expect(component.find('.title').contains(name)).toEqual(true);
   });
 });
+
+const optionTypes = {
+  dropdown: 'OrderOptionDropdown',
+  icons: 'OrderOptionIcons',
+  checkboxes: 'OrderOptionCheckboxes',
+  number: 'OrderOptionNumber',
+  text: 'OrderOptionText',
+  date: 'OrderOptionDate',
+};
+
+for(let type in optionTypes){
+  describe(`Component OrderOption with type=${type}`, () => {
+    /* test setup */
+
+    /* common tests */
+    it('passes dummy test', () => {
+      expect(1).toBe(1);
+    });
+
+    /* type-specific tests */
+    switch (type) {
+      case 'dropdown': {
+        /* tests for dropdown */
+        break;
+      }
+    }
+  });
+}

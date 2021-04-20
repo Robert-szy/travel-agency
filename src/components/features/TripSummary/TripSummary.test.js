@@ -52,8 +52,9 @@ describe('Component TripSummary', () => {
     const tag3 = 'asd3';
     const tags = [tag1, tag2, tag3];
 
-    const component = shallow(<TripSummary tags= {tags} />);
-
+    const component = shallow(<TripSummary name={'nname'} tags= {tags} />);
+    console.log(component.debug());
+    console.log(component.props());
     expect(component.find('span').at(2).contains(tags[0])).toEqual(true);
     expect(component.find('span').at(3).contains(tags[1])).toEqual(true);
     expect(component.find('span').at(4).contains(tags[2])).toEqual(true);
