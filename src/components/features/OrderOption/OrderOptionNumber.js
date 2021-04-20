@@ -10,7 +10,7 @@ const OrderOptionNumber = ({limits, value, optionId, setOptionValue}) => (
     <input
       className={styles.inputSmall}
       type='number'
-      value={parseInt(optionId)}
+      value={optionId}
       min={limits.min}
       max={limits.max}
       onChange={event => setOptionValue(event.currentTarget.value)}

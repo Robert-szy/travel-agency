@@ -16,8 +16,6 @@ const newValueSet = (currentValue, id, checked) => {
   }
 };
 
-//{if(currentValue.indexOf(id))>=0 {currentTarget.checked})}
-
 const OrderOptionCheckboxes = ({values, currentValue, optionId, setOptionValue}) => (
 
   <div
@@ -30,8 +28,6 @@ const OrderOptionCheckboxes = ({values, currentValue, optionId, setOptionValue})
         <input
           type='checkbox'
           value={value.id}
-          //checked={if(currentValue.indexOf(id))>=0 {currentTarget.checked})}
-          //checked={`${value.id.indexOf(value)>=0 ? currentTarget.checked : ''}`}
 
           onChange={event => setOptionValue(newValueSet(optionId, value.id, event.currentTarget.checked))}
         />
