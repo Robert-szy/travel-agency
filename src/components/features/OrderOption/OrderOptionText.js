@@ -24,7 +24,7 @@ const OrderOptionText = ({value, currentValue, setOptionValue}) => (
 OrderOptionText.propTypes = {
   //limits: PropTypes.object,
   value: PropTypes.number,
-  currentValue: PropTypes.number,
+  currentValue: PropTypes.string,
   setOptionValue: PropTypes.func,
 
 };
