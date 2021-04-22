@@ -62,7 +62,13 @@ const OrderForm = ({error, tripCost, options, setOrderOption, tripName, tripCoun
             tripCountry={tripCountry.alpha3Code}
             tripId={tripId}
           ></OrderSummary>
-          <Button onClick={() => sendOrder(tripName, tripId, tripCountry.alpha3Code, options, tripCost)
+          <Button onClick={() => {
+            if(!options.name || !options.contact) {
+              window.alert('Podaj imię i kontakt');
+            } else {
+              sendOrder(tripName, tripId, tripCountry.alpha3Code, options, tripCost);
+            }
+          }
           }>Order now!</Button>
         </Col>
       </Row>
