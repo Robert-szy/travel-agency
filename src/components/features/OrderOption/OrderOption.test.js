@@ -183,7 +183,7 @@ for(let type in optionTypes){
 
         it('should run setOrderOption function on change', () => {
           //nie działa wyszukiwanie/przekazywanie parametrów
-          //renderedSubcomponent.find('input[value="aaa"]').simulate('change', {currentTarget: {checked: true}});
+          renderedSubcomponent.find('input[value="aaa"]').simulate('change', {currentTarget: {checked: true}});
           //expect(mockSetOrderOption).toBeCalledTimes(1);
           //expect(mockSetOrderOption).toBeCalledWith({ [mockProps.currentValue]: testValue });
         });
@@ -204,7 +204,7 @@ for(let type in optionTypes){
 
           renderedSubcomponent.find('input').simulate('change', testValue);
           expect(mockSetOrderOption).toBeCalledTimes(1);
-          //expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValueNumber});
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValueNumber});
         });
         break;
       }

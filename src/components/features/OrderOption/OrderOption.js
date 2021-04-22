@@ -17,6 +17,7 @@ const optionTypes = {
   date: OrderOptionDate,
 };
 
+
 const OrderOption = ({name, type, optionId, id, setOrderOption, ...otherProps}) => {
   const OptionComponent = optionTypes[type];
   if(!OptionComponent){
