@@ -5,12 +5,14 @@ import HappyHourAd from './HappyHourAd';
 
 const mockProps = {
   titleValue: 'Nagłówek zegara',
+  descriptionValue: 'sekundy zegara',
 };
 
 const happyProps = {
   title: '.title',
   description: '.countdown',
   titleExpected: 'Nagłówek zegara',
+  descriptionExpected: 'sekundy zegara',
 };
 
 describe('Component HappyHourAd', () => {
@@ -25,9 +27,11 @@ describe('Component HappyHourAd', () => {
     expect(component.exists(happyProps.description)).toEqual(true);
   });
 
-  it('has correct title', () => {
+  it('has correct title and description', () => {
     const component = shallow(<HappyHourAd {...mockProps}/>);
-    expect(component.find(happyProps.title).prop('title')).toEqual(happyProps.titleExpected);
+    //expect(component.find(happyProps.title).prop('title')).toEqual(happyProps.titleExpected);
+    expect(component.find(happyProps.description).prop('description')).toEqual(happyProps.descriptionExpected);
+
   });
 
 });

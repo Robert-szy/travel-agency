@@ -5,12 +5,12 @@ import styles from './HappyHourAd.scss';
 class HappyHourAd extends React.Component {
 
   render(){
-    const {titleValue} = this.props;
+    const {titleValue, descriptionValue} = this.props;
 
     return (
       <div>
         <h3 className={styles.title} title={titleValue}>{titleValue}</h3>
-        <div className={styles.countdown}>sekundy odliczane</div>
+        <div className={styles.countdown} description={descriptionValue}>{descriptionValue}</div>
 
       </div>
     );
@@ -19,6 +19,7 @@ class HappyHourAd extends React.Component {
 
 HappyHourAd.propTypes = {
   titleValue: PropTypes.string,
+  descriptionValue: PropTypes.string,
 
 };
 
