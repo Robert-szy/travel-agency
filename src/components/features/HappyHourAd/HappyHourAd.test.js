@@ -4,15 +4,15 @@ import HappyHourAd from './HappyHourAd';
 
 
 const mockProps = {
-  titleValue: 'Time to Happy Hour:',
+  titleValue: 'Seconds to Happy Hour:',
   descriptionValue: '25% DISCOUNT!',
 };
 
 const happyProps = {
   title: '.title',
-  description: '.countdown',
+  description: '.promoDescription',
   countdown: '.promoDescription',
-  titleExpected: 'Time to Happy Hour:',
+  titleExpected: 'Seconds to Happy Hour:',
   descriptionExpected: '25% DISCOUNT!',
 };
 
@@ -30,7 +30,6 @@ describe('Component HappyHourAd', () => {
 
   it('has correct title and description', () => {
     const component = shallow(<HappyHourAd {...mockProps}/>);
-    //expect(component.find(happyProps.title).prop('title')).toEqual(happyProps.titleExpected);
     expect(component.find(happyProps.description).prop('description')).toEqual(happyProps.descriptionExpected);
 
   });
@@ -98,7 +97,6 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
 });
 
-
 const checkDescriptionAtPromoTime = (time, expectedDescription) => {
   it(`should show correct at ${time}`, () => {
     global.Date = mockDate(`2019-05-14T${time}.135Z`);
@@ -120,4 +118,6 @@ describe('Component HappyHourAd with mocked Promo Date', () => {
 
 describe('Component HappyHourAd with Promo after countown', () => {
   checkDescriptionAfterTime('11:59:59', 1, happyProps.descriptionExpected);
+  checkDescriptionAfterTime('11:59:59', 10, happyProps.descriptionExpected);
+
 });

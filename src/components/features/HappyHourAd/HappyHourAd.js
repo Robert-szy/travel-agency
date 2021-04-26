@@ -12,6 +12,17 @@ class HappyHourAd extends React.Component {
     }, 1000);
   }
 
+
+  /*sec2time(timeInSeconds) {
+    let pad = function(num, size) { return ('000' + num).slice(size * -1); },
+      time = parseFloat(timeInSeconds).toFixed(3),
+      hours = Math.floor(time / 60 / 60),
+      minutes = Math.floor(time / 60) % 60,
+      seconds = Math.floor(time - minutes * 60);
+
+    return pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2);
+  }*/
+
   getCountdownTime(){
     const currentTime = new Date();
     const nextNoon = new Date(Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0, 0));
@@ -28,11 +39,11 @@ class HappyHourAd extends React.Component {
     const currentTime = this.getCountdownTime();
 
     return (
-      <div>
+      <div className={styles.component}>
         <h3 className={styles.title} title={titleValue}>{titleValue}</h3>
-        <div className={styles.countdown} description={descriptionValue}>{descriptionValue}</div>
-        <div className='promoDescription'>{`${currentTime>(23*60*60) ? descriptionValue : this.getCountdownTime()}`}</div>
-
+        <div className={styles.promoDescription} description={descriptionValue}>
+          {`${currentTime>(23*60*60) ? descriptionValue : this.getCountdownTime()}`}
+        </div>
       </div>
     );
   }
