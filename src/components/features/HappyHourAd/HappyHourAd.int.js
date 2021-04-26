@@ -16,31 +16,6 @@ const happyProps = {
   descriptionExpected: '25% DISCOUNT!',
 };
 
-beforeAll(() => {
-  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
-  utilsModule.formatTime = jest.fn(seconds => seconds);
-});
-
-describe('Component HappyHourAd', () => {
-  it('should render without crashing', () => {
-    const component = shallow(<HappyHourAd/>);
-    expect(component).toBeTruthy();
-  });
-
-  it('contains title and description', () => {
-    const component = shallow(<HappyHourAd/>);
-    expect(component.exists(happyProps.title)).toEqual(true);
-    expect(component.exists(happyProps.description)).toEqual(true);
-  });
-
-  it('has correct title and description', () => {
-    const component = shallow(<HappyHourAd {...mockProps}/>);
-    expect(component.find(happyProps.description).prop('description')).toEqual(happyProps.descriptionExpected);
-
-  });
-
-});
-
 const trueDate = Date;
 
 const mockDate = customDate => class extends Date {
@@ -102,7 +77,7 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
 });
 
-const checkDescriptionAtPromoTime = (time, expectedDescription) => {
+/*const checkDescriptionAtPromoTime = (time, expectedDescription) => {
   it(`should show correct at ${time}`, () => {
     global.Date = mockDate(`2019-05-14T${time}.135Z`);
 
@@ -112,17 +87,6 @@ const checkDescriptionAtPromoTime = (time, expectedDescription) => {
 
     global.Date = trueDate;
   });
-};
-
-describe('Component HappyHourAd with mocked Promo Date', () => {
-  checkDescriptionAtPromoTime('12:00:00', happyProps.descriptionExpected);
-  checkDescriptionAtPromoTime('12:50:59', happyProps.descriptionExpected);
-  checkDescriptionAtPromoTime('12:59:59', happyProps.descriptionExpected);
-});
+};*/
 
 
-describe('Component HappyHourAd with Promo after countown', () => {
-  checkDescriptionAfterTime('11:59:59', 1, happyProps.descriptionExpected);
-  checkDescriptionAfterTime('11:59:59', 10, happyProps.descriptionExpected);
-
-});

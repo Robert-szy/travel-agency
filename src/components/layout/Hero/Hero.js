@@ -9,7 +9,7 @@ const Hero = ({variant = '', titleText, imageSrc, ...otherProps}) => (
     <img className={styles.image}  src={imageSrc} />
 
 
-    <div className={styles.happyHour}><HappyHourAd titleValue={'Seconds to Happy Hour:'} descriptionValue={'25% DISCOUNT!'}/></div>
+    <div className={styles.happyHour}><HappyHourAd titleValue={'Happy Hour:'} descriptionValue={'25% DISCOUNT!'}/></div>
   </div>
 );
 
