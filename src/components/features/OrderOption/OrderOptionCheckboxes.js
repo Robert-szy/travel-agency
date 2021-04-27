@@ -7,11 +7,13 @@ import PropTypes from 'prop-types';
 
 const newValueSet = (currentValue, id, checked) => {
   if(checked){
+    console.log('aasdas', currentValue);
     return [
       ...currentValue,
       id,
     ];
   } else {
+    console.log('aasdas', currentValue);
     return currentValue.filter(value => value != id);
   }
 };
@@ -22,7 +24,7 @@ const OrderOptionCheckboxes = ({values, currentValue, optionId, setOptionValue})
     className={styles.checkboxes}
     value={currentValue}
   >
-
+    {console.log('values', values)}
     {values.map(value => (
       <label key={value.id}>
         <input
